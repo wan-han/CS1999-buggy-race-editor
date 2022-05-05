@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+import os
 import sqlite3 as sql
 
 # app - The flask application where all the magical things are configured.
@@ -85,4 +86,5 @@ def summary():
 
 # You shouldn't need to add anything below this!
 if __name__ == '__main__':
-    app.run(debug = True, host="0.0.0.0")
+    alloc_port = os.environ['CS1999_PORT']
+    app.run(debug=True, host="0.0.0.0", port=alloc_port)
