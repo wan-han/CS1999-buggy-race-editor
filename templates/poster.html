@@ -219,7 +219,7 @@
         border: 1px solid #888;
         width: 80%;
         border-radius: 14px;
-        box-shadow: 20px 20px 10px grey;
+        box-shadow: 15px 15px 20px rgb(184, 184, 184);
       }
 
       #github {
@@ -259,7 +259,7 @@
         background-color: beige;
         padding: 0.2rem;
         border-radius: 7px;
-        height: 1000px;
+        height: 1500px;
         overflow-clip-margin: 1px;
         box-shadow: 10px 10px 20px rgb(162, 160, 160);
       }
@@ -282,6 +282,28 @@
         padding-left: 1rem;
         margin-left: 5.6rem;
         margin-top: 33.5rem;
+      }
+
+      .phase1template {
+        width: 324px;
+        text-align: left;
+        float: left;
+        padding-left: 1rem;
+        margin-left: 5.6rem;
+        margin-top: 33.5rem;
+      }
+
+      .phase1style {
+        width: 324px;
+        text-align: right;
+        float: left;
+        padding-left: 1rem;
+        margin-left: 7rem;
+        margin-top: -12.1rem;
+      }
+
+      div.phase1style p {
+        float: right;
       }
 
       iframe {
@@ -340,9 +362,67 @@
         margin-left: -30rem;
       }
 
+      #valid1 {
+        margin-top: -31rem;
+        margin-left: -5.5rem;
+        z-index: 3;
+      }
+
       .change0info {
         margin-left: 6.5rem;
         margin-right: -5.5rem;
+      }
+
+      div.phase1 p {
+        margin-left: -32rem;
+        width: 300px;
+      }
+
+      .pythonCode {
+        background-color: rgb(106, 102, 102);
+        padding-left: 0.2rem;
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
+        padding-right: 0;
+        border-radius: 7px;
+        font-weight: bolder;
+        margin-left: -32.1rem;
+        z-index: 1;
+        margin-right: 33rem;
+        overflow: auto;
+        font-size: 12px;
+      }
+
+      .white {
+        color: white;
+      }
+
+      .yellow {
+        color: yellow;
+      }
+
+      .orange {
+        color: orange;
+      }
+
+      .red {
+        color: rgb(189, 3, 3);
+      }
+
+      .indent {
+        margin-left: 24px;
+      }
+
+      .template1Continue {
+        margin-left: -32rem; 
+        margin-right: 33rem;
+        margin-top: -1rem;
+      }
+
+      #valid1p {
+        margin-top: 2px;
+        margin-left: -11.5rem;
+        text-align: center;
       }
     </style>
   </head>
@@ -471,19 +551,44 @@
                   properly being processed by the app.py and that we were also
                   working in the correct area.<br /><br />
                   I decided to edit the
-                  <span class="commandBlock">info.html</span> page. Adding in
-                  basic information and then seeing how the result would be.
+                  <span class="commandBlock">buggy-form.html</span> page. Adding
+                  in basic information and then seeing how the result would be.
                   This also allowed me to see how the styling works and
                   understand the linkage to the
-                  <span class="commandBlock">base.html</span> page too.
+                  <span class="commandBlock">base.html</span> page too. I later
+                  removed the additions as they weren't useful for the project.
                 </p>
               </div>
             </div>
           </div>
           <div class="phase1">
             <h1 id="phase1Header">Phase-1</h1>
-            <div class="phase1">
+            <div class="phase1template">
               <h2 id="template1">1-Template</h2>
+              <p>
+                We then added a new html page to the templates folder. We added
+                the <span class="commandBlock">info.html</span> page to the
+                project. <br /><br />
+                It was in this page that I made use of tables to display
+                information about the buggies. The page did not open, this was
+                because it wasn't connected to the
+                <span class="commandBlock">app.py</span>. As a result I had to
+                open up the python file and add a new bit of code to connect the
+                two. The code I added: <div class="pythonCode"><span style="color: rgb(0, 204, 255)">@app.route</span><span class="yellow">(</span><span class="white">'</span><span class="red">/info</span><span class="white">'</span><span class="yellow">)</span> <br>def <span style="color: rgb(0, 204, 255)">info</span><span class="yellow">()</span>:<br>
+                  <span class="indent">req</span> <span style="color: rgb(0, 204, 255)">=</span>
+                  urllib.request.Request<span class="yellow">(</span><span class="white">'</span><span class="red">https://rhul.buggyrace.net/specs/data/types.json</span><span class="white">'</span><span class="yellow">)</span>
+                  <span class="orange"><span class="indent">with</span></span> urllib.request.urlopen<span class="yellow">(</span>req<span class="yellow">)</span> <span class="orange">as</span> response:<br> <span class="indent"><span class="indent">the_page</span></span><span style="color: rgb(0, 204, 255)"> =</span>
+                  response.read<span class="yellow">()</span> <span class="orange"><br><span class="indent">return</span></span> render_template<span class="yellow">(</span><span class="white">"</span><span class="red">info.html</span><span class="white">"</span><span class="yellow">)</span></div><div class="template1Continue"><br>And then I had to add a button to the <span class="commandBlock">index.html</span> so I could reach the site.</div>
+              </p>
+            
+              <div class="phase1valid">
+                <h2 id="valid1">1-Valid</h2>
+                <p id="valid1p">When the user puts information into the form, you need to make sure that it follows the rules. As a result, validation was set up within the <span class="commandBlock">app.py</span> using if statements to check that the requirements are met and then it'll continue or try except if it's invalid.</p>
+              </div>
+              <div class="phase1style">
+                <h2 id="style1">1-Style</h2>
+                <p>Altered the <span class="commandBlock">app.css</span> to change the style of the pages. Mainly the colours. The entirety of the <span class="commandBlock">poster.html</span> (the page you are currently viewing) was made without any css in there at all.</p>
+              </div>
             </div>
           </div>
         </div>
