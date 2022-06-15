@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Poster</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      body {
+        background-color: grey;
+      }
+      .navbar {
+        background-color: rgb(57, 56, 55);
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        top: 0;
+        position: sticky;
+        z-index: 27;
+      }
+
+      .navbar_contain {
+        display: flex;
+        justify-content: space-between;
+        height: 80px;
+        z-index: 1;
+        width: 100%;
+        max-width: 1270px;
+        margin: 0 auto;
+        padding: 0 49px;
+      }
+
+      #navbar-logo {
+        background: repeating-linear-gradient(
+          25deg,
+          #0c0c01,
+          #000000 1em,
+          #ff0000 1em,
+          #ca1111 2em
+        );
+        background-size: 100%;
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -moz-text-fill-color: transparent;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 2.5rem;
+        transition: font-size 1s, background-size 1s;
+        padding-bottom: 4px;
+      }
+
+      #navbar-logo:hover {
+        font-size: 3rem;
+        background-size: 127%;
+      }
+
+      .navbar-menu {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        text-align: center;
+      }
+
+      .navbar-item {
+        height: 80px;
+        color: aliceblue;
+      }
+
+      .navbar-links {
+        display: flex;
+        color: #ca1111;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        padding: 0 1rem;
+        height: 100%;
+      }
+
+      .navbar-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 1rem;
+        width: 100%;
+      }
+
+      .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        padding: 9px 25px;
+        height: 100%;
+        width: 100%;
+        border: none;
+        outline: none;
+        border-radius: 4px;
+        background-color: rgb(172, 78, 76);
+        color: rgb(0, 0, 0);
+      }
+
+      .button:hover {
+        color: azure;
+        font-weight: bold;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .user-info-section {
+        margin: 0;
+        font-family: "montserrat", sans-serif;
+        box-sizing: border-box;
+        display: flex;
+        width: 100%;
+        max-width: 1200px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+      }
+
+      .box-area {
+        background: #2f3542;
+        padding: 0 20px;
+        margin: 0 10px;
+        width: calc(33% - 20px);
+        height: 196px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        cursor: default;
+        border-radius: 27px;
+      }
+
+      .box-icon {
+        font-size: 28px;
+        background: rgb(172, 78, 76);
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        line-height: 60px !important;
+        border-radius: 50%;
+        transition: 0.3s linear;
+      }
+
+      .box-area:hover .box-icon {
+        background: none;
+        color: #cc604d;
+        transform: scale(1.6);
+      }
+
+      .box-area p {
+        margin-top: 20px;
+        font-weight: 300;
+        letter-spacing: 2px;
+        max-height: 0;
+        opacity: 0;
+        transition: 0.3s linear;
+      }
+
+      .box-area:hover p {
+        max-height: 40px;
+        opacity: 1;
+      }
+
+      @media screen and (max-width: 700px) {
+        .box-area {
+          width: 100%;
+          max-width: 300px;
+          margin: 10px 0;
+          align-content: center;
+        }
+
+        .user-info-section {
+          flex-direction: column;
+        }
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        border-radius: 14px;
+        box-shadow: 20px 20px 10px grey;
+      }
+
+      #github {
+        font-size: 2.2rem;
+      }
+
+      .close,
+      .close2 {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        transition-duration: 200ms;
+      }
+
+      .close:hover,
+      .close:focus,
+      .close2:hover,
+      .close2:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .main {
+        padding-top: 2rem;
+      }
+
+      .mainContent {
+        width: 1000px;
+        offset-position: 2rem;
+        background-color: beige;
+        padding: 0.2rem;
+        border-radius: 7px;
+        height: 1000px;
+        overflow-clip-margin: 1px;
+        box-shadow: 10px 10px 20px rgb(162, 160, 160);
+      }
+
+      #myBtn:hover {
+        cursor: pointer;
+      }
+
+      .phase0 {
+        width: 324px;
+        text-align: left;
+        float: left;
+        padding-left: 1rem;
+      }
+
+      .phase1 {
+        width: 324px;
+        text-align: left;
+        float: left;
+        padding-left: 1rem;
+        margin-left: 5.6rem;
+        margin-top: 33.5rem;
+      }
+
+      iframe {
+        border-radius: 7px;
+      }
+
+      div.phase0 ul li:before {
+        content: "※";
+        font-weight: bolder;
+        margin-left: -9px;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      .centerPart1 {
+        text-align: center;
+        margin-left: 20rem;
+        margin-top: -32.5rem;
+        width: 100%;
+      }
+
+      .commandBlock {
+        background-color: rgb(106, 102, 102);
+        padding-left: 3px;
+        padding-right: 3px;
+        border-radius: 3px;
+      }
+
+      .commandBlock:hover {
+        background-color: gray;
+      }
+
+      #phase0Header {
+        text-decoration: underline;
+      }
+
+      #phase1Header {
+        text-decoration: underline;
+      }
+
+      .rightPart1 {
+        text-align: right;
+        margin-left: 35rem;
+        margin-top: -33rem;
+        width: 100%;
+      }
+
+      #get0 {
+        margin-left: 5rem;
+      }
+
+      #template1 {
+        margin-top: -33.5rem;
+        margin-left: -30rem;
+      }
+
+      .change0info {
+        margin-left: 6.5rem;
+        margin-right: -5.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar_contain">
+        <a href="/" id="navbar-logo">🚗 Buggy Racer</a>
+        <div class="navbar-toggle" id="moving-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar-menu">
+          <li class="navbar-button">
+            <a href="/" class="button"> Home </a>
+          </li>
+          <li class="navbar-button">
+            <a href="/new" class="button"> Make Buggy </a>
+          </li>
+          <li class="navbar-button">
+            <a href="/info" class="button"> Info Page </a>
+          </li>
+          <li class="navbar-button">
+            <a id="myBtn" class="button">Creator Info</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="user-info-section">
+          <div class="box-area">
+            <i class="box-icon far fa-envelope"></i>
+            <p>ZKAC251@live.rhul.ac.uk</p>
+          </div>
+
+          <div class="box-area">
+            <i class="box-icon fas fa-phone"></i>
+            <p>+44 7443 620 461</p>
+          </div>
+
+          <div class="box-area">
+            <i class="box-icon fas fa-map-marker-alt"></i>
+            <p>Windsor, UK</p>
+          </div>
+        </div>
+
+        <div class="user-info-section">
+          <div class="box-area">
+            <a href="https://github.com/wan-han" target="_blank"
+              ><i id="github" class="box-icon fa fa-github"></i
+            ></a>
+            <p>wan-han</p>
+          </div>
+          <div class="box-area">
+            <i class="box-icon fa fa-twitter"></i>
+            <p>_OVAride</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <center>
+      <div class="main">
+        <div class="mainContent">
+          <h1 id="phase0Header">Phase-0</h1>
+          <div class="phase0">
+            <h2 id="get0">0-Get</h2>
+            <p>
+              The initialisation of this project took a few steps to do. There
+              was the linking of our github accounts, forking the code, setting
+              up the workspace and then making sure the database is initialised
+              and functioning.<br /><br />In order to view the the Buggy Race
+              Server, please click
+              <a href="https://rhul.buggyrace.net/"
+                ><span style="color: blue"><strong>here</strong></span></a
+              >
+              to be directed or click below to open a pop-up window.
+            </p>
+            <a id="myBtn2" class="button">Buggy Pop-Up Window</a>
+            <div id="myModal2" class="modal">
+              <div class="modal-content">
+                <span class="close2">&times;</span>
+                <iframe
+                  src="https://rhul.buggyrace.net/"
+                  width="100%"
+                  height="500px"
+                ></iframe>
+              </div>
+            </div>
+            <h3>List of Processes for 0-Get:</h3>
+            <ul>
+              <li>Log into the Buggy Race Server</li>
+              <li>Link github account to server</li>
+              <li>Fork the template from github repository</li>
+              <li>Download the workspace configuration file</li>
+              <li>Open in VSC</li>
+              <li>Enter university password</li>
+              <li>Set up a linux workspace</li>
+            </ul>
+            <div class="centerPart1">
+              <h2>0-Run</h2>
+              <p>
+                After having set up the basics with the files and linking it to
+                github, we needed to have the server running to display our
+                web-server. <br />
+                <br />
+                To do this we ran the terminal command
+                <span class="commandBlock">python3 app.py</span>.
+                <br /><br />Initially this ran without any issues however, this
+                soon changed. Eventually it started comming up with an error
+                saying that the port was taken up. Now! There is an easy solve.
+                Heading over to the app.py and scrolling to the bottom showed a
+                little line of code which was for port allocation. By default it
+                was working with a function that would find a port for you.
+                Despite its valiant attempt, it did not succeed. So, I manually
+                changed the port to a random number and for some reason I
+                thought 55551 was a good choice! Huzzah! It worked!
+              </p>
+            </div>
+            <div class="rightPart1">
+              <h2>0-Change</h2>
+              <div class="change0info">
+                <p>
+                  By editing the template we could make sure that the code was
+                  properly being processed by the app.py and that we were also
+                  working in the correct area.<br /><br />
+                  I decided to edit the
+                  <span class="commandBlock">info.html</span> page. Adding in
+                  basic information and then seeing how the result would be.
+                  This also allowed me to see how the styling works and
+                  understand the linkage to the
+                  <span class="commandBlock">base.html</span> page too.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="phase1">
+            <h1 id="phase1Header">Phase-1</h1>
+            <div class="phase1">
+              <h2 id="template1">1-Template</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </center>
+
+    <script>
+      var modal = document.getElementById("myModal");
+      var modal2 = document.getElementById("myModal2");
+
+      var btn = document.getElementById("myBtn");
+      var btn2 = document.getElementById("myBtn2");
+
+      var span = document.getElementsByClassName("close")[0];
+      var span2 = document.getElementsByClassName("close2")[0];
+
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
+
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+
+      btn2.onclick = function () {
+        modal2.style.display = "block";
+      };
+
+      span2.onclick = function () {
+        modal2.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal2) {
+          modal2.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
