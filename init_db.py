@@ -28,7 +28,12 @@ connection.execute("""
     qty_wheels            INTEGER DEFAULT 4,
     flag_color            VARCHAR(20),
     flag_color_secondary  VARCHAR(20),
-    flag_pattern          VARCHAR(20)
+    flag_pattern          VARCHAR(20),
+    type_tyre             VARCHAR(20),
+    attack_type           VARCHAR(20),
+    type_armor            VARCHAR(20),
+    number_tyres          VARCHAR(20),
+    total_cost            VARCHAR(20)
   )
 
 """)
