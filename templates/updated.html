@@ -1,14 +1,10 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
 
-{% block content %}
+<h1>Updated Buggy <img id="rene-hamster" src="/static/rene-hamster.png" /></h1>
 
-  <h1>Updated Buggy</h1>
-
-  <p>
-    {{ msg }}
-  </p>
-  <p>
-    <a href="/" class="button">home</a>
-  </p>
+<p>{{ msg }}</p>
+<p>
+  <a href="/" class="button">home</a>
+</p>
 
 {% endblock %}
