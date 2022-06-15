@@ -1,0 +1,146 @@
+{% extends "base.html" %} {% block content %}
+<p>
+  <a href="/" class="button">home</a>
+</p>
+
+<h2>Date:<img id="rene-hamster" src="/static/rene-hamster.png" /></h2>
+<p>06/05/2022</p>
+<h1>Pricing!</h1>
+<h2>Diesel Prices:</h2>
+<p>wayy tooo expensive 👍</p>
+<h2>Buggy Default Specs:</h2>
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Cost</th>
+    <th>Default Value</th>
+    <th>Extra</th>
+  </tr>
+  <tr>
+    <td>Number of Wheels</td>
+    <td>Free!</td>
+    <td>4</td>
+    <td>If you have extra mass on your buggy, you'll need more wheels!</td>
+  </tr>
+  <tr>
+    <td>Primary Fuel</td>
+    <td>Dependent on Fuel | Costs Per Unit</td>
+    <td>Petrol</td>
+    <td>
+      Types: petrol, fusion, steam, bio, electric, rocket, hamster, thermo,
+      solar, wind
+    </td>
+  </tr>
+  <tr>
+    <td>Power Units Multiplier</td>
+    <td>---</td>
+    <td>1</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>Auxiliary Power Source</td>
+    <td>Dependent on Source | Costs Per Unit</td>
+    <td>N/A</td>
+    <td>
+      petrol, fusion, steam, bio, electric, rocket, hamster, thermo, solar, wind
+    </td>
+  </tr>
+  <tr>
+    <td>Auxiliary Power Amount</td>
+    <td>---</td>
+    <td>0</td>
+    <td>
+      The quantity of auxiliary motive power units. Consumable power units are
+      depleted during the race.
+    </td>
+  </tr>
+  <tr>
+    <td>Hamster Booster</td>
+    <td>5</td>
+    <td>0</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>Flag's Colour</td>
+    <td>---</td>
+    <td>White</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>Flag's Pattern</td>
+    <td>---</td>
+    <td>Plain</td>
+    <td>plain, vstripe, hstripe, dstripe, checker, spot</td>
+  </tr>
+  <tr>
+    <td>Flag Alt Colour</td>
+    <td>---</td>
+    <td>Black</td>
+    <td>
+      Must be different from the flag's primary colour unless the pattern is
+      plain.
+    </td>
+  </tr>
+  <tr>
+    <td>Type of Tyres</td>
+    <td>Depends on Type | Costs Per Unit</td>
+    <td>Knobbly</td>
+    <td>knobbly, slick, steelband, reactive, maglev</td>
+  </tr>
+  <tr>
+    <td>Number of Tyres</td>
+    <td>---</td>
+    <td>4</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>Armour</td>
+    <td>Dependent on Type</td>
+    <td>None</td>
+    <td>none, wood, aluminium, thinsteel, thicksteel, titanium</td>
+  </tr>
+  <tr>
+    <td>Attack Capabilities</td>
+    <td>Dependent on Type | Costs Per Unit</td>
+    <td>None</td>
+    <td>none, spike, flame, charge, biohazard</td>
+  </tr>
+  <tr>
+    <td>Number of Attacks</td>
+    <td>---</td>
+    <td>0</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>Fire Resistance</td>
+    <td>70</td>
+    <td>None</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>Insulation</td>
+    <td>100</td>
+    <td>None</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>Bio Resistance</td>
+    <td>90</td>
+    <td>None</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>Sound System</td>
+    <td>42</td>
+    <td>None</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>Race Computer Algorithm</td>
+    <td>---</td>
+    <td>Steady</td>
+    <td>defensive, steady, offensive, titfortat, random, buggy</td>
+  </tr>
+</table>
+
+{% endblock %}
