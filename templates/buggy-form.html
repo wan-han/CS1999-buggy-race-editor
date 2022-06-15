@@ -69,7 +69,7 @@
 <h1>Make buggy <img id="rene-hamster" src="/static/rene-hamster.png" /></h1>
 
 <form action="/new" method="post">
-  <label for="qty_wheels">Number of wheels:</label>
+  <label for="qty_wheels">Number of wheels: </label>
   <input type="text" name="qty_wheels" value="{{ buggy['qty_wheels'] }}" />
 
   <div class="popup" onclick="myFunction1()">
@@ -80,7 +80,7 @@
     >
   </div>
 
-  <label for="flag_color">Flag Colour:</label>
+  <label for="flag_color">Flag Colour: </label>
   <input type="text" name="flag_color" value="{{ buggy['flag_color'] }}" />
   <div class="popup" onclick="myFunction2()">
     Hint 2
@@ -90,7 +90,7 @@
     >
   </div>
 
-  <label for="flag_color">Second Flag Colour:</label>
+  <label for="flag_color">Second Flag Colour: </label>
   <input
     type="text"
     name="flag_color_secondary"
@@ -104,7 +104,7 @@
     >
   </div>
 
-  <label for="flag_pattern">Flag Pattern :</label>
+  <label for="flag_pattern">Flag Pattern: </label>
   <select name="flag_pattern" style="width: 200px; height: 50px">
     <option name="flag_pattern" value="{{ buggy['flag_pattern'] }}">
       {{ buggy['flag_pattern'] }}
@@ -123,6 +123,72 @@
     >
   </div>
 
+  <label for="type_armor">Type of Armour: </label>
+  <select name="type_armor" style="width: 200px; height: 50px">
+    <option name="type_armor" value="{{ buggy['type_armor'] }}">
+      {{ buggy['type_armor'] }}
+    </option>
+    <option value="none">None</option>
+    <option value="wood">Wood</option>
+    <option value="aluminium">Aluminium</option>
+    <option value="thinsteel">Thinsteel</option>
+    <option value="thicksteel">Thicksteel</option>
+    <option value="titanium">Titanium</option>
+  </select>
+  <div class="popup" onclick="myFunction5()">
+    Hint 5
+    <span class="popuptext" id="myPopup5"
+      >Mi amore! There's plenty of armour for all! Take your pick!</span
+    >
+  </div>
+
+  <label for="type_tyre">Type of Tyre: </label>
+  <select name="type_tyre" style="width: 200px; height: 50px">
+    <option name="type_tyre" value="{{ buggy['type_tyre'] }}">
+      {{ buggy['type_tyre'] }}
+    </option>
+    <option value="knobbly">Knobbly</option>
+    <option value="slick">Slick</option>
+    <option value="steelband">Steelband</option>
+    <option value="reactive">Reactive</option>
+    <option value="maglev">Maglev</option>
+  </select>
+  <div class="popup" onclick="myFunction6()">
+    Hint 5
+    <span class="popuptext" id="myPopup6"
+      >Aren't you just TYRED of this? Well take a pick from our selection!</span
+    >
+  </div>
+
+  <label for="attack_type">Type of Attack: </label>
+  <select name="attack_type" style="width: 200px; height: 50px">
+    <option name="attack_type" value="{{ buggy['attack_type'] }}">
+      {{ buggy['attack_type'] }}
+    </option>
+    <option value="none">None</option>
+    <option value="spike">Spike</option>
+    <option value="flame">Flame</option>
+    <option value="charge">Charge</option>
+    <option value="biohazard">Biohazard</option>
+  </select>
+  <div class="popup" onclick="myFunction7()">
+    Hint 5
+    <span class="popuptext" id="myPopup7"
+      >I know you're TYRED but are you frustrated? Well take a pick from our
+      attack menu!</span
+    >
+  </div>
+
+  <label for="number_tyres">Number of Tyres: </label>
+  <input type="text" name="number_tyres" value="{{ buggy['number_tyres'] }}" />
+  <div class="popup" onclick="myFunction8()">
+    Hint 2
+    <span class="popuptext" id="myPopup8"
+      >This includes spare tyres! Make sure it's great than or equal to the
+      number of wheels!</span
+    >
+  </div>
+
   <input type="submit" class="button" />
 </form>
 
@@ -131,7 +197,6 @@
 </p>
 
 <script>
-  // When the user clicks on div, open the popup
   function myFunction1() {
     var popup1 = document.getElementById("myPopup1");
     popup1.classList.toggle("show");
@@ -149,6 +214,26 @@
 
   function myFunction4() {
     var popup4 = document.getElementById("myPopup4");
+    popup4.classList.toggle("show");
+  }
+
+  function myFunction5() {
+    var popup1 = document.getElementById("myPopup5");
+    popup1.classList.toggle("show");
+  }
+
+  function myFunction6() {
+    var popup2 = document.getElementById("myPopup6");
+    popup2.classList.toggle("show");
+  }
+
+  function myFunction7() {
+    var popup3 = document.getElementById("myPopup7");
+    popup3.classList.toggle("show");
+  }
+
+  function myFunction8() {
+    var popup4 = document.getElementById("myPopup8");
     popup4.classList.toggle("show");
   }
 </script>
