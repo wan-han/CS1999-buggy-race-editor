@@ -1,19 +1,19 @@
-html{
+html {
   margin: 0;
-  padding: 0; 
+  padding: 0;
 }
 body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
   font-size: 1.2em;
-  color: #000000;
+  color: #d40f0f;
   background: repeating-linear-gradient(
     45deg,
-    #ffffee,
-    #ffffee 2em,
-    #eeeeee 2em,
-    #eeeeee 4em
+    #0c0c01,
+    #000000 2em,
+    #ff0000 2em,
+    #ca1111 4em
   );
 }
 .main-content {
@@ -28,15 +28,16 @@ h1 {
 p {
   margin: 1em 0;
 }
-a.button, input.button {
+a.button,
+input.button {
   border: 1px solid #000000;
   padding: 0.5em;
   margin: 0.5em;
   border-radius: 0.25em;
   text-decoration: none;
-  background-color: #ffffff;
+  background-color: #c24242;
   color: #000000;
-  box-shadow: 5px 5px 5px #999999;
+  box-shadow: 5px 5px 5px #810606;
 }
 a.button:hover {
   background-color: #000000;
@@ -54,11 +55,17 @@ table {
   border-collapse: collapse;
   margin: 0 0 2em 0;
 }
-table td, table th {
+table td,
+table th {
   padding: 0.25em;
   border: 1px solid #999999;
   padding: 0.5rem;
 }
 .spacer {
   margin: 3em 0;
+}
+
+#rene-hamster {
+  width: 4px;
+  float: bottom;
 }
