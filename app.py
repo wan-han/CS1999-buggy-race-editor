@@ -42,6 +42,10 @@ def create_buggy():
         flag_color = request.form['flag_color']
         flag_color_secondary = request.form['flag_color_secondary']
         flag_pattern = request.form['flag_pattern']
+        type_armor = request.form['type_armor']
+        type_tyre = request.form['type_tyre']
+        attack_type = request.form['attack_type']
+        number_tyres = request.form['number_tyres']
 
         if not qty_wheels.isdigit():
             msg = f"Entered item is not a numerical value {qty_wheels}"
@@ -55,8 +59,8 @@ def create_buggy():
             with sql.connect(DATABASE_FILE) as con:
                 cur = con.cursor()
                 cur.execute(
-                    "UPDATE buggies set qty_wheels=?, flag_color=?, flag_color_secondary=?, flag_pattern=? WHERE id=?",
-                    (qty_wheels, flag_color, flag_color_secondary, flag_pattern, DEFAULT_BUGGY_ID)
+                    "UPDATE buggies set qty_wheels=?, flag_color=?, flag_color_secondary=?, flag_pattern=?, type_armor=?, type_tyre=?, attack_type=?, number_tyres=? WHERE id=?",
+                    (qty_wheels, flag_color, flag_color_secondary, flag_pattern, type_armor, type_tyre, attack_type, number_tyres, DEFAULT_BUGGY_ID)
                 )
                 con.commit()
                 msg = "Record successfully saved"
@@ -113,7 +117,6 @@ def info():
     req = urllib.request.Request('https://rhul.buggyrace.net/specs/data/types.json')
     with urllib.request.urlopen(req) as response:
         the_page = response.read()
-        # print(the_page)
     return render_template("info.html")
 
 @app.route('/buggy-form')
