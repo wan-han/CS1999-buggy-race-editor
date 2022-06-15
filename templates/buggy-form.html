@@ -1,17 +1,155 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
+<style>
+  /* Popup container - can be anything you want */
+  .popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 
-{% block content %}
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 225px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
 
-  <h1>Make buggy</h1>
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 40%;
+    margin-left: -5px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
 
-  <form action="/new" method="post">
-    <label for="qty_wheels">Number of wheels:</label>
-    <input type="text" name="qty_wheels" />
-    <input type="submit" class="button">
-  </form>
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
 
-  <p>
-    <a href="/" class="button">home</a>
-  </p>
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+
+<h1>Make buggy <img id="rene-hamster" src="/static/rene-hamster.png" /></h1>
+
+<form action="/new" method="post">
+  <label for="qty_wheels">Number of wheels:</label>
+  <input type="text" name="qty_wheels" value="{{ buggy['qty_wheels'] }}" />
+
+  <div class="popup" onclick="myFunction1()">
+    Hint 1
+    <span class="popuptext" id="myPopup1"
+      >The number of wheels must be an even number and greater than or equal to
+      4! Have fun!</span
+    >
+  </div>
+
+  <label for="flag_color">Flag Colour:</label>
+  <input type="text" name="flag_color" value="{{ buggy['flag_color'] }}" />
+  <div class="popup" onclick="myFunction2()">
+    Hint 2
+    <span class="popuptext" id="myPopup2"
+      >Flag colour can be any colour! But make sure you spell it right!
+      Otherwise it'll default white!</span
+    >
+  </div>
+
+  <label for="flag_color">Second Flag Colour:</label>
+  <input
+    type="text"
+    name="flag_color_secondary"
+    value="{{ buggy['flag_color_secondary'] }}"
+  />
+  <div class="popup" onclick="myFunction3()">
+    Hint 3
+    <span class="popuptext" id="myPopup3"
+      >Same as first flag colour! Except it cannot be the same colour!
+      😲🤯</span
+    >
+  </div>
+
+  <label for="flag_pattern">Flag Pattern :</label>
+  <select name="flag_pattern" style="width: 200px; height: 50px">
+    <option name="flag_pattern" value="{{ buggy['flag_pattern'] }}">
+      {{ buggy['flag_pattern'] }}
+    </option>
+    <option value="Plain">Plain</option>
+    <option value="vstripe">V-Stripe</option>
+    <option value="hstripe">H-Stripe</option>
+    <option value="dstripe">D-Stripe</option>
+    <option value="checker">Checker</option>
+    <option value="spot">Spot</option>
+  </select>
+  <div class="popup" onclick="myFunction4()">
+    Hint 4
+    <span class="popuptext" id="myPopup4"
+      >Choose from any of the provided flag patterns for your flag! Whoop!</span
+    >
+  </div>
+
+  <input type="submit" class="button" />
+</form>
+
+<p>
+  <a href="/" class="button">home</a>
+</p>
+
+<script>
+  // When the user clicks on div, open the popup
+  function myFunction1() {
+    var popup1 = document.getElementById("myPopup1");
+    popup1.classList.toggle("show");
+  }
+
+  function myFunction2() {
+    var popup2 = document.getElementById("myPopup2");
+    popup2.classList.toggle("show");
+  }
+
+  function myFunction3() {
+    var popup3 = document.getElementById("myPopup3");
+    popup3.classList.toggle("show");
+  }
+
+  function myFunction4() {
+    var popup4 = document.getElementById("myPopup4");
+    popup4.classList.toggle("show");
+  }
+</script>
 {% endblock %}
